@@ -1,0 +1,97 @@
+﻿@model IEnumerable<ControlIngresoGasto.Models.Person>
+
+@{
+    ViewData["Title"] = "Table Persons";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Table Person</h1>
+
+<p>
+    <a asp-action="Create">Create New Person</a>
+</p>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.lastName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.dni)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.country)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.city)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.gender)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.status)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.birth)
+            </th>
+            <th>
+                Actions
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.lastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.dni)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.country)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.city)
+            </td>
+            <td>
+                
+                @if(item.gender=="Male")
+                {
+                    <p class="btn btn-outline-primary">Male</p>
+                }else if(item.gender=="Female")
+                {
+                    <p class="btn btn-outline-info">Female</p>
+                }else
+                {
+                    <p class="btn btn-outline-dark">Female</p>
+                }
+            </td>
+            <td>
+                @if(item.status==true)
+                {
+                    <p class="btn btn-outline-primary">Active</p>
+                }else
+                {
+                    <p class="btn btn-outline-danger">Inactive</p>
+                }
+                
+            </td>
+            <td>
+                <p> @item.birth.ToString("dd/MM/yyyy") </p>
+            </td>
+            <td >
+                <a class="btn btn-dark" asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a class="btn btn-info" asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

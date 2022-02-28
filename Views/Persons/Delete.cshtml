@@ -1,0 +1,82 @@
+﻿@model ControlIngresoGasto.Models.Person
+
+@{
+    ViewData["Title"] = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Delete</h1>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Person</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.name)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.name)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.lastName)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.lastName)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.dni)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.dni)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.address)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.address)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.country)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.country)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.city)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.city)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.gender)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.gender)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.status)
+        </dt>
+        <dd class = "col-sm-10">
+            @if(Model.status==true)
+                {
+                    <p class="btn btn-outline-primary">Active</p>
+                }else
+                {
+                    <p class="btn btn-outline-danger">Inactive</p>
+                }
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.birth)
+        </dt>
+        <dd class = "col-sm-10">
+            <p> @Model.birth.ToString("dddd, dd MMMM yyyy") </p>
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="Id" />
+        <input type="submit" value="Delete" class="btn btn-danger" /> |
+        <a class="btn btn-outline-primary" asp-action="Index">Back to List</a>
+    </form>
+</div>
